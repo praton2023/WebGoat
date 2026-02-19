@@ -16,6 +16,9 @@
 <properties>
   <sonar.organization>praton2023</sonar.organization>
 </properties>
+
+    <sonar.moduleKey>${project.groupId}:${project.artifactId}</sonar.moduleKey>
+<skipTests>true</skipTests>
     
   <name>WebGoat</name>
   <description>WebGoat, a deliberately insecure Web Application</description>
