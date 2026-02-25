@@ -21,6 +21,8 @@
  */
 
 package org.owasp.webgoat.webwolf.mailbox;
+import org.owasp.webgoat.webwolf.mailbox.dto.EmailDTO;
+import javax.validation.Valid;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
