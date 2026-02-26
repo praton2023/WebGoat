@@ -61,7 +61,7 @@ public class MailboxController {
 
  @PostMapping("/mail")
  @ResponseStatus(HttpStatus.CREATED)
- public void sendEmail(@Valid @RequestBody EmailDTO req) {
+ public void sendEmail(@Valid @RequestBody EmailDTO req) { //test 
   UserDetails user = (UserDetails) SecurityContextHolder.getContext()
       .getAuthentication().getPrincipal();
 
