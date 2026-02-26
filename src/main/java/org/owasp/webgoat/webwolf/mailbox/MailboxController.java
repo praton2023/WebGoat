@@ -21,7 +21,7 @@
  */
 
 package org.owasp.webgoat.webwolf.mailbox;
-import org.owasp.webgoat.webwolf.mailbox.dto.EmailDTO;
+import org.owasp.webgoat.webwolf.mailbox.EmailDTO;
 import javax.validation.Valid;
 
 import java.util.List;
