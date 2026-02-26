@@ -1,4 +1,4 @@
-package org.owasp.webgoat.webwolf.mailbox.dto;
+package org.owasp.webgoat.webwolf.mailbox;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
