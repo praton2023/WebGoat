@@ -42,7 +42,7 @@ public class UserService implements UserDetailsService {
     public WebGoatUser loadUserByUsernameLogin(final String username) throws UsernameNotFoundException {
     WebGoatUser webGoatUser = userRepository.findByUsername(username);
     if (webGoatUser == null) {
-      throw new UsernameNotFoundException("The user or the password is incorrect");
+      throw new UsernameNotFoundException("Bad credentials");
     }
     webGoatUser.createUser();
     return webGoatUser;
