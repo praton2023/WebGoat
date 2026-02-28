@@ -39,6 +39,7 @@ public class InsecureLoginTask extends AssignmentEndpoint {
     return failed(this).build();
   }
 
+  
   @PostMapping("/InsecureLogin/login")
   @ResponseStatus(HttpStatus.ACCEPTED)
   public void login() {
