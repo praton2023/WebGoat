@@ -46,9 +46,10 @@ public class InsecureLoginTask extends AssignmentEndpoint {
 
   @PostMapping("/InsecureLogin/task")
   @ResponseBody
-  public AttackResult completed(@RequestParam String username, @RequestParam String Password) {
-    isValid(username);
-    String hashedPassword = bCryptoPasswordEncoder.encode(Password);
+  public AttackResult completed(@RequestParam String username, @RequestParam String password) {
+    isValidUsername(username);
+    isValidPassword(password);
+    String hashedPassword = bCryptoPasswordEncoder.encode(password);
     WebGoatUser user = userService.loadUserByUsernameLogin(username);
     if(user != null && bCryptoPasswordEncoder.matches(hashedPassword,user.getPassword()) ){
       return success(this).build();
@@ -57,9 +58,15 @@ public class InsecureLoginTask extends AssignmentEndpoint {
     }
   }
   
-  private void isValid(String username) {
+  private void isValidUsername(String username) {
     if (username == null || Pattern.compile("^[a-zA-Z0-9\\s]+$").matcher(username).matches()) { 
-      throw new IllegalArgumentException("Invalid imput. Only numbers and letters permitted"); 
+      throw new IllegalArgumentException("Incorrect password or username"); 
+    } 
+  }
+
+  private void isValidPassword(String password) {
+    if (password == null || Pattern.compile("^[a-zA-Z0-9!@#$%^&*()_+-=[]{}|;:'\",.<>?/\\s]+$").matcher(password).matches()) { 
+      throw new IllegalArgumentException("Incorrect password or username"); 
     } 
   }
 
