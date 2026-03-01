@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
     this.userRepository = userRepository;
   }
 
-    public WebGoatUser loadUserByUsernameLogin(final String username) throws UsernameNotFoundException {
+  public WebGoatUser loadUserByUsernameLogin(final String username) throws UsernameNotFoundException {
     WebGoatUser webGoatUser = userRepository.findByUsername(username);
     if (webGoatUser == null) {
       throw new UsernameNotFoundException("Incorrect password or username");
