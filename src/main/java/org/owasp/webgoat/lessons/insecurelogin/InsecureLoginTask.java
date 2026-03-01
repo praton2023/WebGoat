@@ -65,7 +65,7 @@ public class InsecureLoginTask extends AssignmentEndpoint {
   }
 
   private void isValidPassword(String password) {
-    if (password == null || Pattern.compile("^[a-zA-Z0-9!@#$%^&*()_+-=[]{}|;:'\",.<>?/\\s]+$").matcher(password).matches()) { 
+    if (password == null || Pattern.compile("^[a-zA-Z0-9!@#$%^&*()_+-=\\[\\]{}\\|;:'\",\\.<>?/\\s]+$").matcher(password).matches()) { 
       throw new IllegalArgumentException("Incorrect password or username"); 
     } 
   }
