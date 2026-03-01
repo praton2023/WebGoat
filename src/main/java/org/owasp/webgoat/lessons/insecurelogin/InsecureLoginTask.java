@@ -22,6 +22,8 @@
 
 package org.owasp.webgoat.lessons.insecurelogin;
 
+import java.util.regex.Pattern;
+
 import org.owasp.webgoat.container.assignments.AssignmentEndpoint;
 import org.owasp.webgoat.container.assignments.AttackResult;
 import org.owasp.webgoat.webwolf.user.UserService;
@@ -44,13 +46,21 @@ public class InsecureLoginTask extends AssignmentEndpoint {
 
   @PostMapping("/InsecureLogin/task")
   @ResponseBody
-  public AttackResult completed(@RequestParam String username, @RequestParam String hashedPassword) {
+  public AttackResult completed(@RequestParam String username, @RequestParam String Password) {
+    isValid(username);
+    String hashedPassword = bCryptoPasswordEncoder.encode(Password);
     WebGoatUser user = userService.loadUserByUsernameLogin(username);
     if(user != null && bCryptoPasswordEncoder.matches(hashedPassword,user.getPassword()) ){
       return success(this).build();
-    }else{
+    }else{        
       return failed(this).build();
     }
+  }
+  
+  private void isValid(String username) {
+    if (username == null || Pattern.compile("^[a-zA-Z0-9\\s]+$").matcher(username).matches()) { 
+      throw new IllegalArgumentException("Invalid imput. Only numbers and letters permitted"); 
+    } 
   }
 
   @PostMapping("/InsecureLogin/login")
